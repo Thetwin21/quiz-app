@@ -7,16 +7,36 @@ const questionsData = [
     question: 'Question 1?',
     options: ['Option A', 'Option B', 'Option C', 'Option D'],
     correctAnswer: 'Option A',
+    id: 2,
+    question: 'Question 1?',
+    options: ['Option A', 'Option B', 'Option C', 'Option D'],
+    correctAnswer: 'Option A',
+    id: 3,
+    question: 'Question 1?',
+    options: ['Option A', 'Option B', 'Option C', 'Option D'],
+    correctAnswer: 'Option A',
+    id: 4,
+    question: 'Question 1?',
+    options: ['Option A', 'Option B', 'Option C', 'Option D'],
+    correctAnswer: 'Option A',
+    id: 5,
+    question: 'Question 1?',
+    options: ['Option A', 'Option B', 'Option C', 'Option D'],
+    correctAnswer: 'Option A',
+    id: 6,
+    question: 'Question 1?',
+    options: ['Option A', 'Option B', 'Option C', 'Option D'],
+    correctAnswer: 'Option A',
   },
-  // Add more questions here
 ];
 
 const QuizContainer = ({ onFinish }) => {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    
+  const [currentQuestonId, setCurrentQuestionId] = useState(0);
 
   const handleNextQuestion = () => {
-    if (currentQuestionIndex < questionsData.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    if (currentQuestonId < questionsData.length - 1) {
+      setCurrentQuestionId(currentQuestonId++);
     } else {
       onFinish();
     }
@@ -26,7 +46,7 @@ const QuizContainer = ({ onFinish }) => {
     <div>
       <h2>Quiz App</h2>
       <QuizQuestions
-        questionData={questionsData[currentQuestionIndex]}
+        questionData={questionsData[currentQuestonId]}
         onNextQuestion={handleNextQuestion}
       />
     </div>

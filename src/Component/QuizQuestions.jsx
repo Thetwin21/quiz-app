@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const QuizQuestions = ({ questionData, onNextQuestion }) => {
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState("");
   const [isCorrect, setIsCorrect] = useState(null);
 
   const handleOptionSelect = (option) => {
@@ -10,35 +10,36 @@ const QuizQuestions = ({ questionData, onNextQuestion }) => {
     setIsCorrect(correct);
   };
 
+  const  [qId, setQId] = useState(0)
   const handleNext = () => {
-    setSelectedOption('');
-    setIsCorrect(null);
-    onNextQuestion();
+    setQId(qId++)
   };
 
   return (
-    <div>
-      <h3>{questionData.question}</h3>
-      <ul>
-        {questionData.options.map((option, index) => (
-          <li
-            key={index}
-            onClick={() => handleOptionSelect(option)}
-            style={{
-              backgroundColor:
-                selectedOption === option
-                  ? isCorrect
-                    ? 'green'
-                    : 'red'
-                  : '',
-            }}
-          >
-            {option}
-          </li>
+    <>
+      {questionData &&
+        questionData.map((questions,index) => (
+          <div>
+            <h3>{questions.question}</h3>
+            <ul>
+              {questions.options.map((option, index) => (
+                <li
+                  key={index}
+                  onClick={() => handleOptionSelect(option)}
+                  style={{
+                    backgroundColor:
+                      selectedOption === option
+                         ? "green"
+                        : "" }}
+                >
+                  {option}
+                </li>
+              ))}
+            </ul>
+            <button onClick={handleNext}>Next</button>
+          </div>
         ))}
-      </ul>
-      <button onClick={handleNext}>Next</button>
-    </div>
+    </>
   );
 };
 
