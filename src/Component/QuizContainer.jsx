@@ -41,7 +41,6 @@ const QuizContainer = ({ onFinish }) => {
       <h2>Quiz App</h2>
       <QuizQuestions
         questionData={questionsData}
-        onNextQuestion={handleNextQuestion}
         onFinish={onFinish}
         
       />
