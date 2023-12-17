@@ -11,10 +11,10 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className='w-full h-fit bg-gray-5'>
       {showResult ? (
         <div>
-          <h2>Quiz Finished! Display Result Here</h2>
+          <h2>Quiz Finished! </h2>
         </div>
       ) : (
         <QuizContainer onFinish={handleQuizFinish} />

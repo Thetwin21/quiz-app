@@ -10,11 +10,11 @@ const QuizQuestions = ({ questionData, onFinish }) => {
     setIsCorrect(correct);
   };
 
-  const [currentQuestonId, setCurrentQuestionId] = useState(0);
+  const [currentQuestonId, setCurrentQuestionId] = useState(1);
 
   const handleNextQuestion = () => {
     if (currentQuestonId < questionData.length - 1) {
-      setCurrentQuestionId(currentQuestonId++);
+      setCurrentQuestionId(currentQuestonId + 1);
     } else {
       onFinish();
     }
@@ -24,7 +24,8 @@ const QuizQuestions = ({ questionData, onFinish }) => {
     <>
       {questionData &&
         questionData.map((questions) => (
-          <div>
+          
+          <div className="">
             <h3>{questions.question}</h3>
             <ul>
               {questions.options.map((option, index) => (
@@ -41,7 +42,8 @@ const QuizQuestions = ({ questionData, onFinish }) => {
                 </li>
               ))}
             </ul>
-            <button onClick={handleNextQuestion}>Next</button>
+            
+            <button onClick={ handleNextQuestion}>Next</button>
           </div>
         ))}
     </>
