@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const QuizQuestions = ({ questionData, onNextQuestion }) => {
+const QuizQuestions = ({ questionData }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [isCorrect, setIsCorrect] = useState(null);
 
@@ -10,15 +10,20 @@ const QuizQuestions = ({ questionData, onNextQuestion }) => {
     setIsCorrect(correct);
   };
 
-  const  [qId, setQId] = useState(0)
-  const handleNext = () => {
-    setQId(qId++)
+  const [currentQuestonId, setCurrentQuestionId] = useState(0);
+
+  const handleNextQuestion = () => {
+    if (currentQuestonId < questionsData.length - 1) {
+      setCurrentQuestionId(currentQuestonId++);
+    } else {
+      onFinish();
+    }
   };
 
   return (
     <>
       {questionData &&
-        questionData.map((questions,index) => (
+        questionData.map((questions) => (
           <div>
             <h3>{questions.question}</h3>
             <ul>

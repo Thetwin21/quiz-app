@@ -34,20 +34,16 @@ const QuizContainer = ({ onFinish }) => {
     
   const [currentQuestonId, setCurrentQuestionId] = useState(0);
 
-  const handleNextQuestion = () => {
-    if (currentQuestonId < questionsData.length - 1) {
-      setCurrentQuestionId(currentQuestonId++);
-    } else {
-      onFinish();
-    }
-  };
+ 
 
   return (
     <div>
       <h2>Quiz App</h2>
       <QuizQuestions
-        questionData={questionsData[currentQuestonId]}
+        questionData={questionsData}
         onNextQuestion={handleNextQuestion}
+        onFinish={onFinish}
+        
       />
     </div>
   );
